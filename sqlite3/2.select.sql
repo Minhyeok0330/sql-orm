@@ -61,3 +61,16 @@ where movie_id=1;
 -- Score.objects.filter(user_id=1).count()
 select count(*) from movies_score
 where user_id=1;
+
+-- User.objects.values('country').distinct().count()
+-- distinct는 중복을 제거합니다
+select count(distinct country) from movies_user; 
+
+
+-- User.objects.filter(age__range=[20, 29])
+select * from movies_user
+where age between 20 and 29;
+
+-- Movie.objects.filter(year__in=[2000, 2005, 2010])
+select * from movies_movie
+where year in (2000, 2005, 2010);
