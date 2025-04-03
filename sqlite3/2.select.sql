@@ -30,3 +30,34 @@ where title like '%the%';
 --Movie.objects.filter(title__startswith='the')
 select * from movies_movie
 where title like 'the%';
+--Movie.objects.filter(title__endswith='on.')
+select * from movies_movie
+where title like '%on.';
+
+--ORM에서는 정규표현식을 사용해야 합니다. / 정규표현식=미리 데이터의 형식을 상정한 식
+select * from movies_movie
+where title like '%g__d%';
+
+-- User.objects.filter(age__gte=20, age__lt=30)
+select * from movies_user
+where age>20 and age<30;
+
+-- Movie.objects.filter(Q(year__lt=2000,)| Q(year__gt=2010))
+select * from movies_movie
+where year<2000 or year>2010; 
+
+-- Movie.objects.aggregate(Max('year'))
+select title, max(year) from movies_movie;
+
+-- User.objects.aggregate(Avg('age'))
+select avg(age) from movies_user;
+
+-- 1번 영화의 평균 평점과 최고 평점
+-- Score.objects.filter(movie_id=1).aggregate(Max('value'), Avg('value'))
+select max(value), avg(value) from movies_score
+where movie_id=1;
+
+--1번 유저의 평점 개수
+-- Score.objects.filter(user_id=1).count()
+select count(*) from movies_score
+where user_id=1;
