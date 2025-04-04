@@ -74,3 +74,4 @@ where age between 20 and 29;
 -- Movie.objects.filter(year__in=[2000, 2005, 2010])
 select * from movies_movie
 where year in (2000, 2005, 2010);
+
